@@ -208,6 +208,10 @@ class EC2(object):
 
             tag_object = connection.get_all_tags({'resource-id': EC2.metadata['instance-id']})
 
+            if agentConfig['collect_specific_ec2_tags']:
+                tags_to_collect = agentConfig['collect_specific_ec2_tags']
+                tag_object = [tag for tag in tag_object if tag in tags_to_collect]
+
             EC2_tags = [u"%s:%s" % (tag.name, tag.value) for tag in tag_object]
             if agentConfig.get('collect_security_groups') and EC2.metadata.get('security-groups'):
                 EC2_tags.append(u"security-group-name:{0}".format(EC2.metadata.get('security-groups')))

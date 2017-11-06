@@ -52,6 +52,8 @@ api_key:
 
 # Collect AWS EC2 custom tags as agent tags (requires an IAM role associated with the instance)
 # collect_ec2_tags: no
+# Include only specific EC2 custom tags
+# ec2_tags: Name, env
 # Incorporate security-groups into tags collected from AWS EC2
 # collect_security_groups: no
 
